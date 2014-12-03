@@ -1,6 +1,9 @@
 <?php
 namespace DrrckNlsn\NumberConverter;
 
+/**
+ * Converts numbers to their written, English-language representation.
+ */
 class EnglishNumberConverter implements NumberConverter
 {
     /**
@@ -70,12 +73,18 @@ class EnglishNumberConverter implements NumberConverter
      */
     public function convert($number)
     {
+        $pieces = [];
+
+        if ($number < 0) {
+            $pieces[] = 'negative';
+            $number = abs($number);
+        }
+
         foreach (self::$suffixes as $value => $suffix) {
             if ($number >= $value) {
                 $pre = (int)floor($number / $value);
                 $post = $number % $value;
 
-                $pieces = [];
                 $pieces[] = $this->convert(floor($number / $value));
                 $pieces[] = $suffix;
 
@@ -92,19 +101,18 @@ class EnglishNumberConverter implements NumberConverter
         }
 
         if (isset(self::$teens[$number])) {
-            return self::$teens[$number];
-        }
+            $pieces[] = self::$teens[$number];
+        } else {
+            $tensValue = (int)floor($number / 10) * 10;
+            $onesValue = $number % 10;
 
-        $pieces = [];
-        $tensValue = (int)floor($number / 10) * 10;
-        $onesValue = $number % 10;
+            if ($tensValue !== 0) {
+                $pieces[] = self::$tens[$tensValue];
+            }
 
-        if ($tensValue !== 0) {
-            $pieces[] = self::$tens[$tensValue];
-        }
-
-        if ($onesValue !== 0) {
-            $pieces[] = self::$ones[$onesValue];
+            if ($onesValue !== 0) {
+                $pieces[] = self::$ones[$onesValue];
+            }
         }
 
         return implode(' ', $pieces);

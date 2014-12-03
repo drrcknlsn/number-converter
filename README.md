@@ -9,7 +9,7 @@ coding exercise.
 ### Example
 
 ```php
-$converter = new EnglishNumberConverter();
+$converter = new DrrckNlsn\NumberConverter\EnglishNumberConverter();
 echo $converter->convert(1234567);
 ```
 
