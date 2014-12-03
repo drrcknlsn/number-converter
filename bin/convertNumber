@@ -1,0 +1,30 @@
+#!/usr/bin/env php
+<?php
+use DrrckNlsn\NumberConverter\EnglishNumberConverter;
+
+require 'vendor/autoload.php';
+
+function syntax() {
+    echo <<<SYNTAX
+Converts a number.
+Usage: convertNumber number
+Example: convertNumber 123
+
+SYNTAX;
+}
+
+if (!isset($argv[1])) {
+    syntax();
+    exit;
+}
+
+$number = filter_var($argv[1], FILTER_VALIDATE_INT);
+
+if ($number === false) {
+    syntax();
+    exit;
+}
+
+$converter = new EnglishNumberConverter();
+
+echo $converter->convert($number), "\n";

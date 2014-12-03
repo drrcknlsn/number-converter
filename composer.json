@@ -1,0 +1,28 @@
+{
+  "name": "drrcknlsn/number-converter",
+  "description": "A tool to convert numbers to their written lingual form.",
+  "keywords": ["number", "converter"],
+  "homepage": "https://github.com/drrcknlsn/number-converter",
+  "type": "library",
+  "license": "MIT",
+  "authors": [{
+    "name": "Derrick Nelson",
+    "email": "drrcknlsn@gmail.com"
+  }],
+  "require": {
+    "php": ">=5.4.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~3.7"
+  },
+  "autoload": {
+    "psr-4": {
+      "DrrckNlsn\\NumberConverter\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "DrrckNlsn\\NumberConverter\\": "tests/"
+    }
+  }
+}
