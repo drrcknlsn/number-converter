@@ -29,6 +29,20 @@ project was created with other languages in mind.
 This package comes with a simple CLI binary for demonstrating the
 `EnglishNumberConverter` class, located at `bin/convertNumber`.
 
+### Installing via Composer
+
+The recommended way to install NumberConverter is via [Composer](https://getcomposer.org/doc/00-intro.md):
+
+```bash
+composer require drrcknlsn/number-converter
+```
+
+After installing the dependency, you will need to require Composer's autoloader:
+
+```php
+require 'vendor/autoload.php';
+```
+
 ### Existing Solutions
 
 The [`intl`](http://php.net/manual/en/book.intl.php) extension provides the [`NumberFormatter`](http://php.net/manual/en/class.numberformatter.php)
