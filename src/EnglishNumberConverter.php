@@ -82,14 +82,13 @@ class EnglishNumberConverter implements NumberConverter
 
         foreach (self::$suffixes as $value => $suffix) {
             if ($number >= $value) {
-                $pre = (int)floor($number / $value);
-                $post = $number % $value;
+                $remaining = $number % $value;
 
-                $pieces[] = $this->convert(floor($number / $value));
+                $pieces[] = $this->convert((int)floor($number / $value));
                 $pieces[] = $suffix;
 
-                if ($post !== 0) {
-                    $pieces[] = $this->convert($number % $value);
+                if ($remaining !== 0) {
+                    $pieces[] = $this->convert($remaining);
                 }
 
                 return implode(' ', $pieces);
